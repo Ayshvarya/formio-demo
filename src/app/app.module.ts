@@ -9,6 +9,8 @@ import { ResourcesComponent } from './resources/resources.component';
 import './components/Date';
 import './modals/Date.form';
 import './components/Header';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormManagerConfig } from './interfaces/form-manager.config';
 
 @NgModule({
   declarations: [
@@ -19,9 +21,11 @@ import './components/Header';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormioModule
+    FormioModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [    {provide: FormioAppConfig, useValue: AppConfig},
+  providers: [    {provide: FormioAppConfig, useValue: AppConfig},FormManagerConfig
   ],
   bootstrap: [AppComponent]
 })
