@@ -13,21 +13,21 @@ export class FormBuilderComponent implements OnInit {
     this.form = {
       components: []
     };
+    let obj={};
+    _.each(this.service.resources,(key,val)=>{
+        let comp={};
+        _.each(key.components,(component)=>{
+            comp[component.type]={schema:component,title:component.label};
+        });
+        obj[key.title]={title:key.title,components:comp};
+    });
+    console.log(obj);
 
     this.options={
       builder:{
         resources: {
           title: 'Existing Resources',
-          components: {
-          
-              res1:{
-                title:"resourcename",
-                type:"form",
-                components:[]
-              }
-          
-           
-          }
+          groups:obj
         }
       }
     }
