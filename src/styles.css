@@ -1,8 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-.formio-component-header{
-    position: fixed !important;
-    width:100%;
-}
 
 .formarea{
     height:500px !important;

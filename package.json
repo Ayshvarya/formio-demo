@@ -23,6 +23,7 @@
     "bootstrap": "^4.3.1",
     "bootswatch": "^4.3.1",
     "core-js": "^2.6.0",
+    "express": "^4.17.1",
     "formiojs": "^3.20.9",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",

@@ -28,7 +28,7 @@ export class ResourcesComponent implements OnInit {
 
     this.options={
       builder:{
-        resource: {
+        resourceGroup: {
           title: 'Resources',
           weight: 0,
           default:true
@@ -58,12 +58,16 @@ export class ResourcesComponent implements OnInit {
   ngAfterViewInit() {
     
   }
+  onChange(event){
+    console.log(event);
+  }
 
   saveForm() {
     this.loading = true;
     this.form.title = this.formTitle.nativeElement.value;
     this.form.display = this.formType.nativeElement.value;
     this.form.components = this.builder.formio.schema.components;
+    console.log(this.form.components[0].builderInfo);
     this.form.type="resource";
     if (this.config.tag) {
       this.form.tags = this.form.tags || [];
@@ -74,6 +78,8 @@ export class ResourcesComponent implements OnInit {
       this.form.name = _.camelCase(this.form.title).toLowerCase();
       this.form.path = this.form.name;
     }
+    console.log(this.form);
+    console.log(this.config);
     return this.service.saveResource(this.form).then(form=>{
         this.loading=false;
         this.form = {

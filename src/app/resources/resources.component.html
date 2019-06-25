@@ -11,8 +11,8 @@
     </select>
   </div>
   <div class="col-sm-2">
-    <button class="btn btn-primary btn-block" (click)="saveForm()">Save Form</button>
+    <button class="btn btn-primary btn-block" (click)="saveForm()">Save Resource</button>
   </div>
 </div>
 <formio-alerts [alerts]="alerts"></formio-alerts>
-<form-builder *ngIf="formReady" [formbuilder]="config.builder" [form]="form" [options]="options" #builder></form-builder>
+<form-builder *ngIf="formReady" [formbuilder]="config.builder" [form]="form" [options]="options" #builder (change)="onChange($event)"></form-builder>

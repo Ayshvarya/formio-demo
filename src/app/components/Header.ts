@@ -22,7 +22,7 @@ export default class HeaderComponent extends NestedComponent {
         return {
           title: 'Header',
           icon: 'fa fa-header',
-          group: 'resource',
+          group: 'resourceGroup',
           documentation: 'http://help.form.io/userguide/#container',
           weight: 10,
           schema: HeaderComponent.schema()
