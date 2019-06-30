@@ -67,7 +67,6 @@ export class ResourcesComponent implements OnInit {
     this.form.title = this.formTitle.nativeElement.value;
     this.form.display = this.formType.nativeElement.value;
     this.form.components = this.builder.formio.schema.components;
-    console.log(this.form.components[0].builderInfo);
     this.form.type="resource";
     if (this.config.tag) {
       this.form.tags = this.form.tags || [];
