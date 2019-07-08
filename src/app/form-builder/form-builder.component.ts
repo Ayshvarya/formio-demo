@@ -18,7 +18,9 @@ export class FormBuilderComponent implements OnInit {
     _.each(this.service.resources,(key,val)=>{
         let comp={};
         _.each(key.components,(component)=>{
+          if(component.type !='button'){
             comp[component.type]={schema:component,title:component.label,icon:allComponents.default._components[component.type].builderInfo.icon};
+          }
         });
         obj[key.title]={title:key.title,components:comp};
     });
@@ -52,6 +54,11 @@ export class FormBuilderComponent implements OnInit {
   ngOnInit() {
     
    
+  }
+
+
+  onChange(event){
+  console.log(event);
   }
 
 

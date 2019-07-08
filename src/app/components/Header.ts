@@ -52,6 +52,33 @@ export default class HeaderComponent extends NestedComponent {
           this.createLabel(this.element);
         }
         this.attachLogic();
+
+        // this.createElement();
+        // const labelAtTheBottom = this.component.labelPosition === 'bottom';
+        // if (!labelAtTheBottom) {
+        //   this.createLabel(this.element);
+        // }
+        // if (!this.hasValue()) {
+        //   this.dataValue = {};
+        // }
+        // let elem =this.ce('div', {
+        //   id: "".concat(this.id, "-drag-container"),
+        //   class: 'drag-container'
+        // }, this.ce('div', {
+        //   id: "".concat(this.id, "-placeholder"),
+        //   class: 'alert alert-info',
+        //   style: 'text-align:center; margin-bottom: 0px;',
+        //   role: 'alert'
+        // }, this.text('Drag and Drop a form component')));
+        // this.element.appendChild(elem);
+        // if(this.root.addDragContainer){
+        //   this.root.addDragContainer(elem, this);
+        // }
+        
+        // if (labelAtTheBottom) {
+        //   this.createLabel(this.element);
+        // }
+        // this.attachLogic();
       }
 
       get emptyValue() {

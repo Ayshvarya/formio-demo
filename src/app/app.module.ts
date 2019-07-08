@@ -9,7 +9,7 @@ import { ResourcesComponent } from './resources/resources.component';
 import './components/Date';
 import './modals/Date.form';
 import './components/Header';
-import './modals/Base.form';
+// import './modals/Base.form';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormManagerConfig } from './interfaces/form-manager.config';
 

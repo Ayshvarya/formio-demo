@@ -23,7 +23,12 @@ export class ResourcesComponent implements OnInit {
   constructor(public route: ActivatedRoute,public config: FormManagerConfig,public alerts: FormioAlerts, public service: FormServiceService
     ) { 
     this.form = {
-      components: []
+      components: [{
+        key:'submit',
+        disabled:true,
+        input:true,
+        type:'button'
+      }]
     };
 
     this.options={
@@ -52,16 +57,16 @@ export class ResourcesComponent implements OnInit {
 
   initBuilder(){
     this.formReady = true;
-      return Promise.resolve(true);
   }
 
   ngAfterViewInit() {
     
   }
   onChange(event){
-    console.log(event);
+      event.builder.components = _.sortBy(event.builder.components, function(item) {
+        return item.component.type === 'header' ? 0 : 1;
+      });
   }
-
   saveForm() {
     this.loading = true;
     this.form.title = this.formTitle.nativeElement.value;
@@ -77,12 +82,15 @@ export class ResourcesComponent implements OnInit {
       this.form.name = _.camelCase(this.form.title).toLowerCase();
       this.form.path = this.form.name;
     }
-    console.log(this.form);
-    console.log(this.config);
     return this.service.saveResource(this.form).then(form=>{
         this.loading=false;
         this.form = {
-          components: []
+          components: [{
+            key:'submit',
+            disabled:true,
+            input:true,
+            type:'button'
+          }]
         };
         this.formTitle.nativeElement.value="";
         this.alerts.setAlert({type: 'success', message: "Resource saved successfully"});
