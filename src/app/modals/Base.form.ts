@@ -21,12 +21,22 @@ const Content= [
       type: 'textfield',
       input: true,
       key: 'label',
-      label: 'Labeldddd',
+      label: 'Labelddddsdd',
       placeholder: 'Field Label',
       tooltip: 'The label for this field that will appear next to it.',
       validate: {
         required: true
       },
+    },
+    {
+      weight: 6,
+      type: 'customComp',
+      input: true,
+      key: 'label',
+      label: 'Custom Tag',
+      placeholder: 'Field Label',
+      tooltip: 'custom Component test'
+      
     }
     
 ]
