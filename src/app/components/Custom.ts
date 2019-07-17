@@ -14,6 +14,13 @@ export default class CustomComponent extends NestedComponent {
           key: 'customComp',
           clearOnHide: true,
           input: true,
+          addAnother: 'Add Another',
+          valueComponent: {
+            type: 'textfield',
+            api: 'value',
+            defaultValue: 'Value',
+            input: true
+          },
          
         },...extend);
       }
@@ -30,10 +37,15 @@ export default class CustomComponent extends NestedComponent {
       constructor(component, options, data) {
         super(component, options, data);
         this.type = 'customComp';
+        this.rows={};
       }
 
       get defaultSchema() {
         return CustomComponent.schema();
+      }
+
+      get componentComponents() {
+        return [this.component.valueComponent];
       }
 
       get emptyValue() {
@@ -49,14 +61,39 @@ export default class CustomComponent extends NestedComponent {
         if (!this.hasValue()) {
           this.dataValue = {};
         }
-        let elem =this.ce('p', {
+        this.elem =this.ce('p', {
           id: "".concat(this.id, "-custom"),
           class: 'custom-container'
         }, this.text('Hi am a custom component'));
-        this.element.appendChild(elem);
+
+        this.buildRows(state);
+        this.element.appendChild(this.elem);
        
         this.createDescription(this.element);
         this.attachLogic();
+      }
+
+      buildRows(state){
+        if (this.options.builder) {
+          return;
+        }
+        this.destroyComponents();
+        _.each(this.rows, row => row.value.destroy());
+        this.rows = {};
+        this.empty(this.elem);
+        const compRows = [];
+        _.each(this.dataValue, (value, key) => compRows.push(this.buildRow(value, key, state)));
+      }
+
+      buildRow(value, key, state) {
+        console.log(value,key,state);
+      }
+
+      setValue(value) {
+        const changed = this.hasChanged(value, this.dataValue);
+        this.dataValue = value;
+        
+        return changed;
       }
     
 }

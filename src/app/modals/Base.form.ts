@@ -1,7 +1,11 @@
 import _ from 'lodash';
 const EditFormUtils=require('formiojs/components/base/editForm/utils');
 const baseForm=require('formiojs/components/base/Base.form');
-const BaseEditDisplay=require('formiojs/components/base/editForm/Base.edit.display');
+let BaseEditDisplay=require('formiojs/components/base/editForm/Base.edit.display');
+const BaseEditAPI=require('formiojs/components/base/editForm/Base.edit.api');
+BaseEditDisplay.default=_.filter(BaseEditDisplay.default, function(obj) {
+  return obj.key != 'label';
+});
 const Content= [
     {
       key: 'customComponentDescription',
@@ -56,7 +60,12 @@ baseForm.default=function(){
             label:'Custom',
             key:'custom',
             components:Content
-        }
+        },
+        {
+          label:'API',
+          key:'api',
+          components:BaseEditAPI.default
+      }
     
     
     ]
