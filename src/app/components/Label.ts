@@ -2,40 +2,39 @@ import _ from 'lodash';
 const BaseComponent = require('formiojs/components/base/Base').default;
 const Components = require('formiojs/components/Components').default;
 import baseEditForm from '../modals/Date.form';
-export default class DividerComponent extends BaseComponent {
+export default class LabelComponent extends BaseComponent {
     type: string;
     dataValue: {};
 
     static schema() {
         return BaseComponent.schema({
-          type: 'divider',
-          label: 'Divider',
-          key: 'divider',
+          type: 'label',
+          label: 'Label',
+          key: 'label',
           clearOnHide: true,
           input: true,
           components: [],
-          hidelabel:true
         });
       }
 
       static get builderInfo() {
         return {
-          title: 'Date',
+          title: 'Label',
           group: 'basic',
           icon: 'fa fa-calendar-plus-o',
           documentation: 'http://help.form.io/userguide/#datetime',
           weight: 0,
-          schema: DividerComponent.schema(),
+          schema: LabelComponent.schema(),
         };
       }
 
       constructor(component, options, data) {
         super(component, options, data);
-        this.type = 'divider';
+        this.type = 'label';
       }
 
       get defaultSchema() {
-        return DividerComponent.schema();
+        return LabelComponent.schema();
       }
 
       get emptyValue() {
@@ -53,11 +52,7 @@ export default class DividerComponent extends BaseComponent {
         if (!this.hasValue()) {
           this.dataValue = {};
         }
-        let elem =this.ce('hr', {
-          id: "".concat(this.id, "-divider"),
-          class: 'divider-container'
-        });
-        this.element.appendChild(elem);
+        
        
         this.attachLogic();
       }
@@ -76,6 +71,4 @@ export default class DividerComponent extends BaseComponent {
       
     
 }
-DividerComponent.editForm=baseEditForm;
-Components.addComponent('divider', DividerComponent);
-Components.setComponent('divider',DividerComponent);
+Components.addComponent('label', LabelComponent);

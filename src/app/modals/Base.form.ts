@@ -3,9 +3,10 @@ const EditFormUtils=require('formiojs/components/base/editForm/utils');
 const baseForm=require('formiojs/components/base/Base.form');
 let BaseEditDisplay=require('formiojs/components/base/editForm/Base.edit.display');
 const BaseEditAPI=require('formiojs/components/base/editForm/Base.edit.api');
-BaseEditDisplay.default=_.filter(BaseEditDisplay.default, function(obj) {
-  return obj.key != 'label';
-});
+
+// BaseEditDisplay.default=_.filter(BaseEditDisplay.default, function(obj) {
+//   return obj.key != 'label';
+// });
 const Content= [
     {
       key: 'customComponentDescription',

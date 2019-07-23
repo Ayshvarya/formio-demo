@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { FormBuilderComponent } from './form-builder/form-builder.component';
 import { AppConfig } from './config';
 import { ResourcesComponent } from './resources/resources.component';
+//import './modals/Base';
+
 import './components/Date';
 import './modals/Date.form';
 import './components/Header';
-//import './components/Custom';
+import './components/Label';
+
  import './modals/Base.form';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormManagerConfig } from './interfaces/form-manager.config';
 
