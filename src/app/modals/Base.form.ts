@@ -1,7 +1,8 @@
 import _ from 'lodash';
-const EditFormUtils=require('formiojs/components/base/editForm/utils');
+const EditFormUtils=require('formiojs/components/base/editForm/utils').default;
 const baseForm=require('formiojs/components/base/Base.form');
-let BaseEditDisplay=require('formiojs/components/base/editForm/Base.edit.display');
+import BaseEditDisplay from './BaseEditDisplay';
+import { ifError } from 'assert';
 const BaseEditAPI=require('formiojs/components/base/editForm/Base.edit.api');
 
 // BaseEditDisplay.default=_.filter(BaseEditDisplay.default, function(obj) {
@@ -47,7 +48,8 @@ const Content= [
 ]
 
 
-baseForm.default=function(){
+export default baseForm.default=function(...extend){
+
     var components = _.cloneDeep([{
         type: 'tabs',
         key: 'tabs',
@@ -55,23 +57,47 @@ baseForm.default=function(){
           label: 'Display',
           key: 'display',
           weight: 0,
-          components: BaseEditDisplay.default
+          components: BaseEditDisplay
         },
         {
             label:'Custom',
             key:'custom',
+            weight:20,
             components:Content
         },
         {
           label:'API',
           key:'api',
+          weight:30,
           components:BaseEditAPI.default
       }
     
     
     ]
       }]);
-    
+      let a1=components[0].components;
+      let a2= [].concat.apply([], extend);;
+      
+      let merged= _.map(a1,(item)=>{
+          let obj=a2.find(item2 => item2.key == item.key);
+          if(obj){
+            return {
+              key:item.key,
+              weight:item.weight,
+              label:item.label,
+              components:EditFormUtils.sortAndFilterComponents([...item.components,...obj.components])
+            }
+          }
+          else{
+            return {
+              key:item.key,
+              weight:item.weight,
+              label:item.label,
+              components:item.components
+            }
+          }
+      });
+      components[0].components=merged;
       return {
         components: _.unionWith(components, EditFormUtils.unifyComponents).concat({
           type: 'hidden',

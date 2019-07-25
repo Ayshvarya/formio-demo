@@ -1,5 +1,5 @@
 import _ from 'lodash';
-const EditFormUtils=require('formiojs/components/base/editForm/utils');
+const EditFormUtils=require('formiojs/components/base/editForm/utils').default;
 import baseForm from 'formiojs/components/base/Base.form';
 import textDisplaytab from 'formiojs/components/textfield/editForm/TextField.edit.display';
 const TextFieldComponent = require('formiojs/components/textfield/TextField').default;
