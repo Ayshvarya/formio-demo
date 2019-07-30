@@ -18,7 +18,8 @@ import './modals/Base.form';
 import './modals/nested/Nested.form';
 import './modals/tabs/Tabs.form';
 
-import './modals/textField/TExtField.form';
+import './modals/textField/TextField.form';
+import './modals/textField/TextField';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormManagerConfig } from './interfaces/form-manager.config';
